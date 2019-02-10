@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
+import React from 'react';
+import Index from 'views/index';
 
 ReactDOM.render(
     <Router>
-        <p>Hi</p>
+        <Index />
     </Router>
 , document.getElementById('root'));

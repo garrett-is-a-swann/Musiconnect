@@ -13,6 +13,10 @@ module.exports = (env) => {
                     test: /\.js$/,
                     exclude: /node_modules/,
                     loaders: ['babel-loader']
+                },
+                {
+                    test: /\.png$/,
+                    loader: 'file-loader'
                 }
             ]
         },
@@ -21,16 +25,20 @@ module.exports = (env) => {
         },
         output: {
             filename: 'main.js',
-            path: path.resolve(__dirname, 'dist')
+            path: path.resolve(__dirname, 'dist'),
+            publicPath: '/'
         },
         devServer: {
             contentBase: path.join(__dirname, 'dist'),
             compress: true,
             port: 9000,
+            historyApiFallback: true,
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: './src/index.html'
+                title: env && env.appTitle? env.appTitle: 'Undefined Title',
+                template: './src/index.html',
+                favicon: './src/favicon.ico'
             }),
         ]
     };
